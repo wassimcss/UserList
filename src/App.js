@@ -1,25 +1,18 @@
-import logo from './logo.svg';
+import React,{useState} from 'react'
+import UserList from './Components/UserList'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-function App() {
+
+ const App = () => {
+  const [show, setShow] = useState(false)
+  const handleClick = () => setShow(!show)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>User List</h1>
+      <button onClick={handleClick} className={show ? "btn btn-danger" : "btn btn-primary"}>{show ? "Hide users" : "Show users"}</button>
+      {show ? <UserList/> : <p> Hello ,You can see our users whenever you want</p>}
     </div>
-  );
+  )
 }
-
-export default App;
+export default App
